@@ -2,8 +2,15 @@ import { createYoga, createSchema } from "graphql-yoga";
 
 const typeDefs = /* GraphQL */ `
   type Query {
+    stores: [Store!]!
     products: [Product!]!
     payments: [Payment!]!
+  }
+
+  type Store {
+    id: ID!
+    name: String!
+    location: String!
   }
 
   type Product {
@@ -21,6 +28,12 @@ const typeDefs = /* GraphQL */ `
   }
 `;
 
+type Store = {
+  id: string;
+  name: string;
+  location: string;
+};
+
 type Product = {
   id: string;
   name: string;
@@ -34,6 +47,19 @@ type Payment = {
   status: string;
   products: Product[];
 };
+
+const stores: Store[] = [
+  {
+    id: "a4fcff37-cd71-4c76-9ff9-079fb4f118ca",
+    name: "Meadow Market",
+    location: "New York",
+  },
+  {
+    id: "134928c6-91bf-47dc-9233-256eef00b315",
+    name: "Blossom Bazaar",
+    location: "Los Angeles",
+  },
+];
 
 const products: Product[] = [
   {
@@ -73,8 +99,14 @@ const payments: Payment[] = [
 
 const resolvers = {
   Query: {
+    stores: () => stores,
     products: () => products,
     payments: () => payments,
+  },
+  Store: {
+    id: (parent: Store) => parent.id,
+    name: (parent: Store) => parent.name,
+    location: (parent: Store) => parent.location,
   },
   Product: {
     id: (parent: Product) => parent.id,
