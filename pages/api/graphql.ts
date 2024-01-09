@@ -18,6 +18,7 @@ const typeDefs = /* GraphQL */ `
     name: String!
     price: Int!
     hasStock: Boolean!
+    hasSale: Boolean!
   }
 
   type Payment {
@@ -39,6 +40,7 @@ type Product = {
   name: string;
   price: number;
   hasStock: boolean;
+  hasSale: boolean;
 };
 
 type Payment = {
@@ -67,18 +69,21 @@ const products: Product[] = [
     name: "Unbranded Bronze Shirt",
     price: 100,
     hasStock: true,
+    hasSale: false,
   },
   {
     id: "e77d6ccd-7fd0-48e7-97e6-299e437e4d34",
     name: "Handcrafted Cotton Keyboard",
     price: 399,
     hasStock: true,
+    hasSale: true,
   },
   {
     id: "81f96851-a015-4213-9335-8afd20829ba6",
     name: "Fantastic Metal Car",
     price: 245,
     hasStock: false,
+    hasSale: false,
   },
 ];
 
@@ -113,6 +118,7 @@ const resolvers = {
     name: (parent: Product) => parent.name,
     price: (parent: Product) => parent.price,
     hasStock: (parent: Product) => parent.hasStock,
+    hasSale: (parent: Product) => parent.hasSale,
   },
   Payment: {
     id: (parent: Payment) => parent.id,
