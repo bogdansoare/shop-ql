@@ -4,13 +4,14 @@ const typeDefs = /* GraphQL */ `
   type Query {
     stores: [Store!]!
     products: [Product!]!
-    payments: [Payment!]!
+    favoriteColor: AllowedColor # As a return value
+    avatar(borderColor: AllowedColor): String # As an argument
   }
 
   type Store {
     id: ID!
     name: String!
-    location: String!
+    locationPlace: String!
   }
 
   type Product {
@@ -20,18 +21,17 @@ const typeDefs = /* GraphQL */ `
     hasStock: Boolean!
   }
 
-  type Payment {
-    id: ID!
-    amount: Int!
-    status: String!
-    products: [Product!]!
+  enum AllowedColor {
+    RED
+    GREEN
+    BLUE
   }
 `;
 
 type Store = {
   id: string;
   name: string;
-  location: string;
+  locationPlace: string;
 };
 
 type Product = {
@@ -41,23 +41,16 @@ type Product = {
   hasStock: boolean;
 };
 
-type Payment = {
-  id: string;
-  amount: number;
-  status: string;
-  products: Product[];
-};
-
 const stores: Store[] = [
   {
     id: "a4fcff37-cd71-4c76-9ff9-079fb4f118ca",
     name: "Meadow Market",
-    location: "New York",
+    locationPlace: "New York",
   },
   {
     id: "134928c6-91bf-47dc-9233-256eef00b315",
     name: "Blossom Bazaar",
-    location: "Los Angeles",
+    locationPlace: "Los Angeles",
   },
 ];
 
@@ -82,43 +75,25 @@ const products: Product[] = [
   },
 ];
 
-const payments: Payment[] = [
-  {
-    id: "a4fcff37-cd71-4c76-9ff9-079fb4f118ca",
-    amount: 100,
-    status: "PAID",
-    products: [products[0]],
-  },
-  {
-    id: "134928c6-91bf-47dc-9233-256eef00b315",
-    amount: 499,
-    status: "PENDING",
-    products: [products[0], products[1]],
-  },
-];
-
 const resolvers = {
   Query: {
     stores: () => stores,
     products: () => products,
-    payments: () => payments,
+    favoriteColor: () => "RED",
+    avatar(root, args) {
+      // args.borderColor is 'RED', 'GREEN', or 'BLUE'
+    },
   },
   Store: {
     id: (parent: Store) => parent.id,
     name: (parent: Store) => parent.name,
-    location: (parent: Store) => parent.location,
+    locationPlace: (parent: Store) => parent.locationPlace,
   },
   Product: {
     id: (parent: Product) => parent.id,
     name: (parent: Product) => parent.name,
     price: (parent: Product) => parent.price,
     hasStock: (parent: Product) => parent.hasStock,
-  },
-  Payment: {
-    id: (parent: Payment) => parent.id,
-    amount: (parent: Payment) => parent.amount,
-    status: (parent: Payment) => parent.status,
-    products: (parent: Payment) => parent.products,
   },
 };
 
