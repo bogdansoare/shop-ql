@@ -5,8 +5,6 @@ const typeDefs = /* GraphQL */ `
     stores: [Store!]!
     products: [Product!]!
     owners: [Owner!]!
-    favoriteColor: AllowedColor # As a return value
-    avatar(foobar: AllowedColor): String # As an argument
   }
 
   type Store {
@@ -27,12 +25,6 @@ const typeDefs = /* GraphQL */ `
     id: ID!
     name: String!
     age: String
-  }
-
-  enum AllowedColor {
-    RED
-    GREEN
-    BLUE
   }
 
   interface Character {
