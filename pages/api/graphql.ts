@@ -39,6 +39,13 @@ const typeDefs = /* GraphQL */ `
     id: ID!
     name: String!
   }
+
+  union SearchResult = Product | Owner
+
+  input ReviewInput {
+    stars: Int!
+    commentary: String
+  }
 `;
 
 type Store = {
