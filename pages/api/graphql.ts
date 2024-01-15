@@ -36,6 +36,12 @@ const typeDefs = /* GraphQL */ `
     stars: Int!
     commentary: String
   }
+
+  enum AllowedColor {
+    RED
+    GREEN
+    BLUE
+  }
 `;
 
 type Store = {
