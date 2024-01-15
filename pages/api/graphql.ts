@@ -40,7 +40,7 @@ const typeDefs = /* GraphQL */ `
   enum AllowedColor {
     RED
     GREEN
-    BLUE
+    YELLOW
   }
 `;
 
