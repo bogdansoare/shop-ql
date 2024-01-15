@@ -40,9 +40,7 @@ const typeDefs = /* GraphQL */ `
     name: String!
   }
 
-  union SearchResult = Product | Owner
-
-  input ReviewInput {
+  input ReviewInput2 {
     stars: Int!
     commentary: String
   }
