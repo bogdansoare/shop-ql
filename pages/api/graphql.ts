@@ -26,7 +26,7 @@ const typeDefs = /* GraphQL */ `
   type Owner {
     id: ID!
     name: String!
-    age: Int
+    age: String
   }
 
   enum AllowedColor {
