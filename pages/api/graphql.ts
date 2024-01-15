@@ -34,6 +34,11 @@ const typeDefs = /* GraphQL */ `
     GREEN
     BLUE
   }
+
+  interface Character {
+    id: ID!
+    name: String!
+  }
 `;
 
 type Store = {
