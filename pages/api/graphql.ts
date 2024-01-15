@@ -95,10 +95,6 @@ const resolvers = {
   Query: {
     stores: () => stores,
     products: () => products,
-    favoriteColor: () => "RED",
-    avatar(root, args) {
-      // args.borderColor is 'RED', 'GREEN', or 'BLUE'
-    },
   },
   Store: {
     id: (parent: Store) => parent.id,
