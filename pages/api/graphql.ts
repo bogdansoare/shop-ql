@@ -5,7 +5,7 @@ const typeDefs = /* GraphQL */ `
     stores: [Store!]!
     products: [Product!]!
     owners: [Owner!]!
-    foo(bar: String): String
+    foo(bar: Int): String
   }
 
   type Store {
