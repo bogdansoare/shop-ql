@@ -4,6 +4,7 @@ const typeDefs = /* GraphQL */ `
   type Query {
     stores: [Store!]!
     products: [Product!]!
+    owners: [Owner!]!
     favoriteColor: AllowedColor # As a return value
     avatar(borderColor: AllowedColor): String # As an argument
   }
@@ -12,6 +13,7 @@ const typeDefs = /* GraphQL */ `
     id: ID!
     name: String!
     locationPlace: String!
+    owner: Owner!
   }
 
   type Product {
@@ -19,6 +21,12 @@ const typeDefs = /* GraphQL */ `
     name: String!
     price: Int!
     hasStock: Boolean!
+  }
+
+  type Owner {
+    id: ID!
+    name: String!
+    age: Int
   }
 
   enum AllowedColor {
@@ -39,6 +47,12 @@ type Product = {
   name: string;
   price: number;
   hasStock: boolean;
+};
+
+type Owner = {
+  id: string;
+  name: string;
+  age?: number;
 };
 
 const stores: Store[] = [
