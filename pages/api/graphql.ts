@@ -6,7 +6,7 @@ const typeDefs = /* GraphQL */ `
     products: [Product!]!
     owners: [Owner!]!
     favoriteColor: AllowedColor # As a return value
-    avatar(borderColor: AllowedColor): String # As an argument
+    avatar(foobar: AllowedColor): String # As an argument
   }
 
   type Store {
